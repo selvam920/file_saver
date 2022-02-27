@@ -28,10 +28,10 @@ class Dialog(private val activity: Activity) : PluginRegistry.ActivityResultList
     private var bytes: ByteArray? = null
     private var fileName: String? = null
     private val TAG = "Dialog Activity"
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent): Boolean {
-        if (requestCode == SAVE_FILE &&  resultCode == Activity.RESULT_OK && data.data != null) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
+        if (requestCode == SAVE_FILE &&  resultCode == Activity.RESULT_OK && data!!.data != null) {
             Log.d(TAG, "Starting file operation")
-            completeFileOperation(data.data!!)
+            completeFileOperation(data!!.data!!)
         } else {
             Log.d(TAG, "Activity result was null")
             return false
